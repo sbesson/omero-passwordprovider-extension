@@ -2,12 +2,14 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
   "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
-  <bean id="noopPasswordProvider" class="com.glencoesoftware.omero.NoopPasswordProvider">
+  <bean id="noopPasswordProvider" class="com.glencoesoftware.omero.NoopPasswordProvider"
+        lazy-init="true">
     <constructor-arg ref="passwordUtil"/>
     <constructor-arg value="true"/>
   </bean>
 
-  <bean id="chainedPasswordProviderNoop" class="ome.security.auth.PasswordProviders">
+  <bean id="chainedPasswordProviderNoop" class="ome.security.auth.PasswordProviders"
+        lazy-init="true">
     <constructor-arg>
       <list>
         <ref bean="noopPasswordProvider"/>
